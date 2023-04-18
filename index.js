@@ -17,18 +17,54 @@
 
 // get info with backend https://newsapi.org/sources
 
+
+const form = document.querySelector('.form');
+const select = document.querySelector('.category');
+const pageSizeInput = document.querySelector('.pageSize');
+const title = document.querySelector('.counter');
+const subTitle = document.querySelector('.totalPages');
 const list = document.querySelector('.list');
+const loedMoreButton = document.querySelector('.loed');
+
 const KEY = '862dd5d592264690b4379c4e02f8834a';
 const BASA_URL = 'https://newsapi.org/v2/';
-const URL = `${BASA_URL}top-headlines?apiKey=${KEY}&category=sports&country=ua&pageSize=10`;
-fetch(URL)
+let currentPage = 1;
+//const URL = `${BASA_URL}top-headlines?apiKey=${KEY}&category=sports&country=ua&pageSize=10`;
+
+
+const updateUi = (data, pageSize) => {
+    title.textContent = `All sourch : ${data?.totalResults} news`;
+    list.innerHTML = '';
+    subTitle.textContent = `All sourshed news on : ${Math.ceil(data?.totalResults / pageSize)} pages`;
+};
+
+const handleSubmit = (e) => {
+    e.preventDefault();
+    const category = select.value;
+    const pageSize = pageSizeInput.value;
+    const url = `${BASA_URL}top-headlines?apiKey=${KEY}&category=${category}&country=ua&pageSize=${pageSize}&page=${currentPage}`
+    fetch(url)
 .then((response) => response.json())
 .then((data) => {
-   // console.log('data', data);
-   insertContent(data.articles);})
+    //console.log('data', data);
+    if (e.type === 'submit') {
+        updateUi(data, pageSize);
+    }
+    
+   insertContent(data.articles);
+   currentPage += 1;
+    if (currentPage > Math.ceil(data?.totalResults / pageSize)) {
+        loedMoreButton.classList.add('hide');
+    }
+})
 .catch((error) => {
-    console.log('error', error)});
+    console.log('error', error);
+});
 
+};
+
+form.addEventListener('submit', handleSubmit);
+loedMoreButton.addEventListener('click', handleSubmit);
 
 const createlistitem = (item) => `
 <li>
