@@ -1,3 +1,89 @@
 .hide {
     display: none;
 }
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.form {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.form select {
+    flex: 1;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.form .pageSize {
+    flex: 1;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+.form .search {
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.form .search:hover {
+    background-color: #3e8e41;
+}
+
+h1 {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.counter {
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.totalPages {
+    margin-top: 10px;
+}
+
+.list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.list li {
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.list li h3 {
+    margin-top: 0;
+    font-size: 18px;
+}
+
+.list li p {
+    margin: 10px 0;
+    font-size: 14px;
+}
+
+.load {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.load:hover {
+    background-color: #3e8e41;
+}
