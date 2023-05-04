@@ -56,7 +56,7 @@ const handleSubmit = (e) => {
     if (currentPage > Math.ceil(data?.totalResults / pageSize)) {
         loedMoreButton.classList.add('hide');
     }
-})
+}) 
 .catch((error) => {
     console.log('error', error);
 });
@@ -68,7 +68,7 @@ loedMoreButton.addEventListener('click', handleSubmit);
 
 const createlistitem = (item) => `
 <li>
-${item.urlToImage ? `<img src='${item.urlToImage}'alt='${item.description}'>` : ''} //якщо не має картинки
+${item.urlToImage ? `<img src='${item.urlToImage}'alt='${item.description}'>` : ''} 
 <h2>'${item.title}'</h2>
 <p>'${item.description ? item.description : ''}'</p>
 <p>'${item.author ?? ''}'</p>
